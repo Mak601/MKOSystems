@@ -9,6 +9,7 @@ uses
   System.Classes,
   System.Threading,
   System.Generics.Collections,
+  System.StrUtils,
   IModuleInterface,
   ICoreInterface,
   IShellInterface,
@@ -204,23 +205,27 @@ var
   LResult: TStringList;
 begin
   LShellTask := Sender as TShellMainMenuItem;
-  Log('Performing Task: ' + LShellTask.FSRegexPattern, tlgInfo);
-  LResult := TStringList.Create;
-  LResult.Delimiter := #13;
-  try
+  Log(Format('Performing Task(%s): %s %s', [ifthen(LShellTask.TaskType = fsttSearcher, 'File Search', 'File Content Scan'), LShellTask.FilePath, LShellTask.FSRegexPattern]), tlgInfo);
+
     case LShellTask.TaskType of
       fsttSearcher:
         begin
           LTask := TTask.Create(
             procedure()
             begin
-              LFileSearcher := TFileSeacher.Create(LShellTask.FSRegexPattern);
+              LResult := TStringList.Create;
+              LResult.Delimiter := #13;
               try
-                LFileSearcher.GetFiles(LShellTask.FilePath, LResult);
-                Log(Format('Results for the Task(File Search): %s' + #13 + '%s',
-                  [LShellTask.Title, LResult.DelimitedText]), tlgInfo);
+                LFileSearcher := TFileSeacher.Create(LShellTask.FSRegexPattern);
+                try
+                  LFileSearcher.GetFiles(LShellTask.FilePath, LResult);
+                  Log(Format('Results for the Task(File Search): %s' + #13 + '%s',
+                    [LShellTask.Title, LResult.DelimitedText]), tlgInfo);
+                finally
+                  LFileSearcher.Free;
+                end;
               finally
-                LFileSearcher.Free;
+                LResult.Free;
               end;
             end);
           LTask.Start;
@@ -230,27 +235,30 @@ begin
           LTask := TTask.Create(
             procedure()
             begin
-              LFileContentScanner := TFileContentScanner.Create;
+              LResult := TStringList.Create;
+              LResult.Delimiter := #13;
               try
-                for var Sequence in LShellTask.FCSSequences do
-                  LFileContentScanner.AddPattern(Sequence);
-                LFileContentScanner.Search(LShellTask.FilePath, LResult);
-                Log(Format('Results for the Task(Content Scanner): %s' + #13 + '%s',
-                  [LShellTask.Title, LResult.DelimitedText]), tlgInfo);
+                LFileContentScanner := TFileContentScanner.Create;
+                try
+                  for var Sequence in LShellTask.FCSSequences do
+                    LFileContentScanner.AddPattern(Sequence);
+                  LFileContentScanner.Search(LShellTask.FilePath, LResult);
+                  Log(Format('Results for the Task(Content Scanner): %s' + #13 + '%s',
+                    [LShellTask.Title, LResult.DelimitedText]), tlgInfo);
+                finally
+                  LFileSearcher.Free;
+                end;
               finally
-                LFileSearcher.Free;
+                LResult.Free;
               end;
             end);
           LTask.Start;
         end;
     end;
 
-  finally
-    LResult.Free;
-  end;
 end;
 
-/// ///////////////////
+//////////////////////
 
 // Initialization
 
