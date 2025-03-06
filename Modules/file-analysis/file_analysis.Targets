@@ -8,9 +8,13 @@
     DependsOnTargets="$(PostBuildEventDependsOn)">
 
         <ItemGroup>
+	    <TestData Include="$(MSBuildProjectDirectory)\TestData\*.*"/>
             <ModuleConfig Include="$(MSBuildProjectDirectory)\$(SanitizedProjectName).ini"/>
         </ItemGroup>
 
+        <Copy
+              SourceFiles="@(TestData)"
+              DestinationFolder="$(DCC_ExeOutput)\..\TestData" />
 		
         <!--
           deploy ini configuration file only if it does not exists in output

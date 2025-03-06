@@ -1,0 +1,18 @@
+CREATE MpVMSObjects.TMpVMSEngine
+CREATE MpVMSObjects.THttpCamSource
+CREATE MpVMSObjects.TSinkRequest
+CREATE MpVMSObjects.TScreenDisplaySink
+CREATE MpVMSObjects.TSinkRequest
+CREATE MpVMSObjects.TPreRollStorageProcess
+CREATE MpVMSObjects.TSinkRequest
+DESTROY MpVMSObjects.TScreenDisplaySink
+DESTROY MpVMSObjects.TSinkRequest
+DESTROY MpVMSObjects.TMpVMSEngine
+Tell SourceList to Free
+DESTROY: MpVMSObjects.TSourceList
+DESTROY MpVMSObjects.THttpCamSource
+DESTROY: MpVMSObjects.TSinkList
+DESTROY MpVMSObjects.TSinkRequest
+DESTROY: MpVMSObjects.TSinkList
+DESTROY MpVMSObjects.TPreRollStorageProcess
+DESTROY MpVMSObjects.TSinkRequest

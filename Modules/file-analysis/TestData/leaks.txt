@@ -1,0 +1,79 @@
+allocation number: 130728
+program up time: 2,60 s
+type: GetMem
+address: $16695df0
+size: 56
+access rights: read/write
+
+main thread ($20d4):
+671ebc55 madExcept64.dll     madExceptDbg      586 CollectCallstackData
+671efe2f madExcept64.dll     madExceptDbg     1749 GetMemCallback
+168992fe edge_controller.dll System           4923 @GetMem
+1689ce2c edge_controller.dll System          18306 TObject.NewInstance
+168a9334 edge_controller.dll System          40144 TInterfacedObject.NewInstance
+1689da2e edge_controller.dll System          19622 @ClassCreate
+1689cfe3 edge_controller.dll System          18365 TObject.Create
+16b06011 edge_controller.dll EdgeController    544 TEdgeController.CreateConditions
+16b020e4 edge_controller.dll EdgeController    192 TEdgeController.Create
+16b17473 edge_controller.dll edge_controller   125 TEgdeControllerModule.ReadConfig
+16b1841c edge_controller.dll edge_controller   284 InitModule
+0ca29e17 mps_core.dll        ModuleManager     140 TModuleManager.LoadModule
+0ca2aae9 mps_core.dll        ModuleManager     233 TModuleManager.LoadModules
+0ca3608b mps_core.dll        mps_core          175 TCore.LoadModules
+0ca367c2 mps_core.dll        mps_core          230 StartCore
+007a0d16 mps_shell_win.exe   MainFrm           170 TMainForm.StartCore
+006e8780 mps_shell_win.exe   Vcl.ExtCtrls     3244 TTimer.Timer
+006e85a7 mps_shell_win.exe   Vcl.ExtCtrls     3202 TTimer.WndProc
+005c4593 mps_shell_win.exe   System.Classes  18534 StdWndProc
+0077ee4e mps_shell_win.exe   Vcl.Forms       11488 TApplication.ProcessMessage
+0077eec3 mps_shell_win.exe   Vcl.Forms       11518 TApplication.HandleMessage
+0077f31a mps_shell_win.exe   Vcl.Forms       11657 TApplication.Run
+007a508c mps_shell_win.exe   mps_shell_win      27 initialization
+
+memory dump: 
+16695df0  e8 3d b0 16 00 00 00 00 - 01 00 00 00 00 00 00 00  .=..............
+16695e00  b0 34 89 16 00 00 00 00 - 10 01 9d 0a 00 00 00 00  .4..............
+16695e10  e0 ba 82 16 00 00 00 00 - c8 3c b0 16 00 00 00 00  .........<......
+16695e20  00 00 00 00 00 00 00 00                            ........
+
+allocation number: 130729
+program up time: 2,60 s
+type: TEdgeCondition
+address: $a9d00c0
+size: 96
+access rights: read/write
+reference counter: 1
+
+main thread ($20d4):
+671ebc55 madExcept64.dll     madExceptDbg      586 CollectCallstackData
+671efe2f madExcept64.dll     madExceptDbg     1749 GetMemCallback
+168992fe edge_controller.dll System           4923 @GetMem
+1689ce2c edge_controller.dll System          18306 TObject.NewInstance
+168a9334 edge_controller.dll System          40144 TInterfacedObject.NewInstance
+1689da2e edge_controller.dll System          19622 @ClassCreate
+16b08813 edge_controller.dll EdgeController   1160 TEdgeCondition.Create
+16b0606b edge_controller.dll EdgeController    549 TEdgeController.CreateConditions
+16b020e4 edge_controller.dll EdgeController    192 TEdgeController.Create
+16b17473 edge_controller.dll edge_controller   125 TEgdeControllerModule.ReadConfig
+16b1841c edge_controller.dll edge_controller   284 InitModule
+0ca29e17 mps_core.dll        ModuleManager     140 TModuleManager.LoadModule
+0ca2aae9 mps_core.dll        ModuleManager     233 TModuleManager.LoadModules
+0ca3608b mps_core.dll        mps_core          175 TCore.LoadModules
+0ca367c2 mps_core.dll        mps_core          230 StartCore
+007a0d16 mps_shell_win.exe   MainFrm           170 TMainForm.StartCore
+006e8780 mps_shell_win.exe   Vcl.ExtCtrls     3244 TTimer.Timer
+006e85a7 mps_shell_win.exe   Vcl.ExtCtrls     3202 TTimer.WndProc
+005c4593 mps_shell_win.exe   System.Classes  18534 StdWndProc
+0077ee4e mps_shell_win.exe   Vcl.Forms       11488 TApplication.ProcessMessage
+0077eec3 mps_shell_win.exe   Vcl.Forms       11518 TApplication.HandleMessage
+0077f31a mps_shell_win.exe   Vcl.Forms       11657 TApplication.Run
+007a508c mps_shell_win.exe   mps_shell_win      27 initialization
+
+memory dump: 
+0a9d00c0  38 58 af 16 00 00 00 00 - 01 00 00 00 00 00 00 00  8X..............
+0a9d00d0  b0 34 89 16 00 00 00 00 - 1a ab 88 f7 0f d3 ba 4d  .4.............M
+0a9d00e0  9f 8c c0 33 26 62 a6 55 - 18 74 51 01 00 00 00 00  ...3&b.U.tQ.....
+0a9d00f0  90 60 69 16 00 00 00 00 - 30 63 69 16 00 00 00 00  .`i.....0ci.....
+0a9d0100  01 00 00 00 00 00 00 00 - 18 5e 69 16 00 00 00 00  .........^i.....
+0a9d0110  b8 56 af 16 00 00 00 00 - 01 00 00 00 00 00 00 00  .V..............
+
