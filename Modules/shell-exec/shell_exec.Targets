@@ -1,0 +1,25 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<!--
+  IDK how to apply this task to normal post-build process, so currently we parazitide on PostBuildEvent target.
+  Original target see in \Embarcadero\Studio\23.0\bin\CodeGear.Common.Targets
+  configured project post-build event wont be executed.
+-->
+  <Target Name="PostBuildEvent"
+    DependsOnTargets="$(PostBuildEventDependsOn)">
+
+        <ItemGroup>
+            <ModuleConfig Include="$(MSBuildProjectDirectory)\$(SanitizedProjectName).ini"/>
+        </ItemGroup>
+
+		
+        <!--
+          deploy ini configuration file only if it does not exists in output
+        -->
+        <Copy
+              SourceFiles="@(ModuleConfig)"
+              DestinationFolder="$(DCC_ExeOutput)"
+              Condition="!Exists('$(DCC_ExeOutput)\$(SanitizedProjectName).ini')" />
+
+  </Target>
+
+</Project>

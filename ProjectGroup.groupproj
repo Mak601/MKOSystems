@@ -1,0 +1,84 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{93D9B46C-4286-44DD-BDD3-36216735BF35}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Shell\shell-vlc-ibasiccontrol-win\shell_win_vcl.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Core\core.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Modules\ulog-txt-file\ulog_txt_file.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Modules\file-analysis\file_analysis.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Modules\shell-exec\shell_exec.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="shell_win_vcl">
+        <MSBuild Projects="Shell\shell-vlc-ibasiccontrol-win\shell_win_vcl.dproj"/>
+    </Target>
+    <Target Name="shell_win_vcl:Clean">
+        <MSBuild Projects="Shell\shell-vlc-ibasiccontrol-win\shell_win_vcl.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="shell_win_vcl:Make">
+        <MSBuild Projects="Shell\shell-vlc-ibasiccontrol-win\shell_win_vcl.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="core">
+        <MSBuild Projects="Core\core.dproj"/>
+    </Target>
+    <Target Name="core:Clean">
+        <MSBuild Projects="Core\core.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="core:Make">
+        <MSBuild Projects="Core\core.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ulog_txt_file">
+        <MSBuild Projects="Modules\ulog-txt-file\ulog_txt_file.dproj"/>
+    </Target>
+    <Target Name="ulog_txt_file:Clean">
+        <MSBuild Projects="Modules\ulog-txt-file\ulog_txt_file.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ulog_txt_file:Make">
+        <MSBuild Projects="Modules\ulog-txt-file\ulog_txt_file.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="file_analysis">
+        <MSBuild Projects="Modules\file-analysis\file_analysis.dproj"/>
+    </Target>
+    <Target Name="file_analysis:Clean">
+        <MSBuild Projects="Modules\file-analysis\file_analysis.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="file_analysis:Make">
+        <MSBuild Projects="Modules\file-analysis\file_analysis.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="shell_exec">
+        <MSBuild Projects="Modules\shell-exec\shell_exec.dproj"/>
+    </Target>
+    <Target Name="shell_exec:Clean">
+        <MSBuild Projects="Modules\shell-exec\shell_exec.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="shell_exec:Make">
+        <MSBuild Projects="Modules\shell-exec\shell_exec.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="shell_win_vcl;core;ulog_txt_file;file_analysis;shell_exec"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="shell_win_vcl:Clean;core:Clean;ulog_txt_file:Clean;file_analysis:Clean;shell_exec:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="shell_win_vcl:Make;core:Make;ulog_txt_file:Make;file_analysis:Make;shell_exec:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
